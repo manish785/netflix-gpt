@@ -17,7 +17,7 @@
     - Trailer in the Background
     - Title and Description
     - MovieSuggestion
-       - MovieList * N
+       - MovieLists * N
 
 - NetflixGPT
    - Search Bar
