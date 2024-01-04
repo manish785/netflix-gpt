@@ -2,14 +2,22 @@ import { useState, useRef } from 'react';
 import Header from "./Header";
 import { checkValidData } from '../utils/validate';
 import { auth } from "../utils/firebase";
-import { getAuth, createUserWithEmailAndPassword,signInWithEmailAndPassword } from "firebase/auth";
+import { USER_AVATAR } from "../utils/constants";
+import { getAuth, createUserWithEmailAndPassword,signInWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { useNavigate } from 'react-router-dom';
+import { addUser } from "../utils/userSlice";
+import { useDispatch } from 'react-redux';
 
 const Login = () => {
     const [isSignInForm, setIsSignInForm] = useState(true); 
     const [errorMessage, setErrorMessage] = useState(null);
+    const dispatch = useDispatch();
 
+    const name = useRef(null);
     const email = useRef(null);
     const password = useRef(null);
+
+    const navigate = useNavigate();
      
     const toggleSignInForm = () => {
         setIsSignInForm(!isSignInForm);
@@ -32,21 +40,44 @@ const Login = () => {
           email.current.value,
           password.current.value
         )
-          .then((userCredential) => {
-            const user = userCredential.user;
+        .then((userCredential) => {
+          const user = userCredential.user;
+          console.log(user);
+          updateProfile(user, {
+            displayName: name.current.value,
+            photoURL: USER_AVATAR,
+          })
+          .then(() => {
             console.log(user);
+            const { uid, email, displayName, photoURL } = auth.currentUser;
+            dispatch(
+              addUser({
+                uid: uid,
+                email: email,
+                displayName: displayName,
+                photoURL: photoURL,
+              })
+            );
+            navigate('/browse');
           })
           .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            setErrorMessage(errorCode + "-" + errorMessage);
+            console.log('Elon');
+            setErrorMessage(error.message);
           });
+        })
+        .catch((error) => {
+          console.log('Elon Musk')
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrorMessage(errorCode + "-" + errorMessage);
+        });
       }else{
         signInWithEmailAndPassword(auth, email.current.value, password.current.value)
         .then((userCredential) => {
           // Signed in 
           const user = userCredential.user;
           console.log(user);
+          navigate('/browse');
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -74,6 +105,7 @@ const Login = () => {
                 </h1>
                 {!isSignInForm && (<input 
                    type="text" 
+                   ref={name}
                    placeholder="Full Name" 
                    className="p-4 my-4 w-full bg-gray-700"  
                 />)}
