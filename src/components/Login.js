@@ -42,13 +42,11 @@ const Login = () => {
         )
         .then((userCredential) => {
           const user = userCredential.user;
-          console.log(user);
           updateProfile(user, {
             displayName: name.current.value,
             photoURL: USER_AVATAR,
           })
           .then(() => {
-            console.log(user);
             const { uid, email, displayName, photoURL } = auth.currentUser;
             dispatch(
               addUser({
@@ -61,12 +59,10 @@ const Login = () => {
             navigate('/browse');
           })
           .catch((error) => {
-            console.log('Elon');
             setErrorMessage(error.message);
           });
         })
         .catch((error) => {
-          console.log('Elon Musk')
           const errorCode = error.code;
           const errorMessage = error.message;
           setErrorMessage(errorCode + "-" + errorMessage);
@@ -76,7 +72,6 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in 
           const user = userCredential.user;
-          console.log(user);
           navigate('/browse');
         })
         .catch((error) => {
