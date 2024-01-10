@@ -3,7 +3,7 @@ import Header from "./Header";
 import { checkValidData } from '../utils/validate';
 import { auth } from "../utils/firebase";
 import { USER_AVATAR } from "../utils/constants";
-import { getAuth, createUserWithEmailAndPassword,signInWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword,signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { useNavigate } from 'react-router-dom';
 import { addUser } from "../utils/userSlice";
 import { useDispatch } from 'react-redux';
@@ -128,5 +128,6 @@ const Login = () => {
         </div>
     )
 }
+
 
 export default Login;

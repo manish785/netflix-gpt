@@ -3,6 +3,7 @@ import { API_OPTIONS } from '../utils/constants';
 import { addPopularMovies } from '../utils/moviesSlice';
 import { useEffect } from 'react';
 
+
 const usePopularMovies = () => {
      // Fetch data from TMDB API and updated the store
     const dispatch = useDispatch();
