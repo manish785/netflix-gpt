@@ -85,47 +85,59 @@ const Login = () => {
     }
 
     return (
-        <div>
-            <Header />
-            <div className="absolute">
-                <img 
-                   src={BG_URL}
-                   alt = 'logo' 
-                />
-            </div>
-            <form 
-                onSubmit={(e) => e.preventDefault()} 
-                className="w-3/12 absolute p-12 bg-black my-36 mx-auto right-0 left-0 text-white">
-                <h1 className="font-bold text-3xl py-4">
-                    {isSignInForm ? 'Sign In' : 'Sign Up'}
-                </h1>
-                {!isSignInForm && (<input 
-                   type="text" 
-                   ref={name}
-                   placeholder="Full Name" 
-                   className="p-4 my-4 w-full bg-gray-700"  
-                />)}
-                <input 
-                   type="text" 
-                   ref={email}
-                   placeholder="Email Address" 
-                   className="p-4 my-4 w-full bg-gray-700"
-                />
-                <input 
-                   type="password" 
-                   ref={password}
-                   placeholder="Password" 
-                   className="p-4 my-4 w-full bg-gray-700"  
-                />
-                <p className='text-red-500 font-bold text-lg py-2'>{errorMessage}</p>
-                <button className="p-4 my-6 bg-red-700 w-full rounded-lg" onClick={handleButtonClick}>
-                   {isSignInForm ? 'Sign In' : 'Sign Up'}
-                </button>
-                <p className="py-4 cursor-pointer" onClick={toggleSignInForm}>
-                   {isSignInForm ? 'New to Netflix ? Sign Up Now' : 'Already registered ? Sign In Now.'}
-                </p>
-            </form>
-        </div>
+      <div>
+      <Header />
+      <div className="absolute">
+        <img
+          className="h-screen w-screen object-cover"
+          src={BG_URL}
+          alt="BG-IMG"
+        />
+      </div>
+      <form
+        onSubmit={(e) => e.preventDefault()}
+        className="absolute left-0 right-0 w-[70%] md:w-[70%] xl:w-[25%] p-4 md:p-8 mx-auto text-white bg-black rounded-lg my-36 bg-opacity-888 "
+      >
+        <h1 className="py-4 text-3xl font-bold">
+          {isSignInForm ? 'Sign In' : 'Sign Up'}
+        </h1>
+        {!isSignInForm && (
+          <input
+            ref={name}
+            type="text"
+            placeholder="Full Name"
+            className="p-4 rounded-md my-2 w-full bg-[#333333] border-b-2  border-transparent  focus:border-b-2 focus:outline-0"
+          />
+        )}
+        <input
+          ref={email}
+          type="email"
+          placeholder="Email Address"
+          className="p-4 rounded-md my-2 w-full bg-[#333333] border-b-2  border-transparent focus:border-b-2  focus:outline-0"
+        />
+        <input
+          ref={password}
+          type="password"
+          placeholder="Password"
+          className="p-4 rounded-md my-2 w-full bg-[#333333] border-b-2 border-transparent  focus:border-b-2  focus:outline-0"
+        />
+        <p className="text-[#e50914]">{errorMessage}</p>
+        <button
+          className="p-4 my-6 rounded-md bg-[#e50914] hover:bg-[#d6180b] w-full font-medium"
+          onClick={handleButtonClick}
+        >
+          {isSignInForm ? 'Sign In' : 'Sign Up'}
+        </button>
+        <p
+          className="my-4 cursor-pointer opacity-100  hover:opacity-100 hover:underline"
+          onClick={toggleSignInForm}
+        >
+          {isSignInForm
+            ? 'New to Netflix? Sign Up Now'
+            : 'Already registered? Sign In Now'}
+        </p>
+      </form>
+    </div>
     )
 }
 
