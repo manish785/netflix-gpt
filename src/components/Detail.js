@@ -1,12 +1,10 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 import { API_OPTIONS } from '../utils/constants';
 import { useSelector } from 'react-redux';
 import useMovieTrailer from '../hooks/useMovieTrailer';
-// import TriangleImage from "../img/navigate-back-white.svg";
 import Cast from './Cast';
 import Loading from './Loading';
-// import Background from "../img/BG.jpg";
 
 
 const Detail = () => {
@@ -161,6 +159,7 @@ const Detail = () => {
           </div>
         </div>
       );
-    };
+};
+
 
 export default Detail;

@@ -5,6 +5,7 @@ import Error from './Error';
 import Detail from "./Detail";
 import Series from "./Series";
 
+
 const Body = () => {
     const appRouter = createBrowserRouter([
         {
@@ -29,6 +30,7 @@ const Body = () => {
         }
     ]);
 
+    
     return (
         <div>
            <RouterProvider router={appRouter}/>

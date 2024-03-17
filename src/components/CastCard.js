@@ -1,5 +1,6 @@
 import { IMG_CDN_URL } from "../utils/constants";
 
+
 const CastCard = ({ id, profilePath, name }) => {
   if (!profilePath) return null;
 
@@ -18,4 +19,6 @@ const CastCard = ({ id, profilePath, name }) => {
     </div>
   );
 };
+
+
 export default CastCard;

@@ -2,8 +2,6 @@ import React, { useState, useRef, useEffect } from "react";
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-// import leftA from "../img/left-arrow.png";
-// import rightA from "../img/right-arrow.png";
 import { API_OPTIONS } from '../utils/constants';
 import CastCard from "./CastCard";
 
@@ -99,19 +97,3 @@ const Cast = ({ id }) => {
 
 
 export default Cast;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

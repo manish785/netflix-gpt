@@ -23,7 +23,7 @@ const GptSearchBar = () => {
         const json = await data.json();
 
         return json.results;
-};
+    };
 
     const handleGptSearchClick = async () => {
        
